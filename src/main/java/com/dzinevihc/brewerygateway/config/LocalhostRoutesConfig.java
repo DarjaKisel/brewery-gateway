@@ -12,7 +12,9 @@ public class LocalhostRoutesConfig {
     public RouteLocator localHostRoutesConfig(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/v2/beer*", "/v2/beer/*", "/v2/beerUpc/*")
-                            .uri("http://localhost:8081"))
+                        .uri("http://localhost:8081"))
+                .route(r -> r.path("/api/v1/beer/*/inventory")
+                        .uri("http://localhost:8082"))
                 .route(r -> r.path("/api/v1/customers/**")
                         .uri("http://localhost:8083"))
                 .build();
